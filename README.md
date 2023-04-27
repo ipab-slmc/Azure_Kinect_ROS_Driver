@@ -14,6 +14,11 @@ sudo apt install k4a-tools
 
 ```
 
+Then edit k4abtConfig.cmake
+`sudo vim /usr/lib/cmake/k4abt/k4abtConfig.cmake`
+and change line to:
+`find_dependency(k4a 1.4.1 REQUIRED)`
+
 Then clone and build this ROS package.
 
 

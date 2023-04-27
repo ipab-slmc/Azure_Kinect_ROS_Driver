@@ -1,3 +1,23 @@
+# SLMC Fork
+This fork makes change to allow installation on Ubuntu 20.04 with ROS Noetic.
+
+## First install SDK with following commands
+```
+curl -sSL https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+sudo apt-add-repository https://packages.microsoft.com/ubuntu/18.04/prod
+curl -sSL https://packages.microsoft.com/config/ubuntu/18.04/prod.list | sudo tee /etc/apt/sources.list.d/microsoft-prod.list
+curl -sSL https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+sudo apt-get update
+sudo apt install libk4a1.4-dev
+sudo apt install libk4abt1.1-dev
+sudo apt install k4a-tools
+
+```
+
+Then clone and build this ROS package.
+
+
+
 # Azure Kinect ROS Driver
 
 This project is a node which publishes sensor data from the [Azure Kinect Developer Kit](https://azure.microsoft.com/en-us/services/kinect-dk/) to the [Robot Operating System (ROS)](http://www.ros.org/). Developers working with ROS can use this node to connect an Azure Kinect Developer Kit to an existing ROS installation.

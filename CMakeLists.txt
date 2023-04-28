@@ -92,11 +92,11 @@ message(STATUS "Finding K4A SDK binaries")
 unset(k4a_DIR CACHE)
 
 # Force running the Findk4a.cmake module
-find_package(k4a 1.3.0 QUIET MODULE REQUIRED)
+find_package(k4a 1.4.1 QUIET MODULE REQUIRED)
 set(K4A_LIBS k4a::k4a;k4a::k4arecord)
 
 # Try to find and enable the body tracking SDK
-find_package(k4abt 1.0.1 QUIET MODULE)
+find_package(k4abt 1.1.2 QUIET MODULE)
 if (k4abt_FOUND)
   list(APPEND K4A_LIBS k4abt::k4abt)
   message(STATUS "Body Tracking SDK found: compiling support for Body Tracking")
@@ -109,7 +109,7 @@ endif()
 if(MSVC AND NOT k4abt_FOUND)
   if(CUDA_SUPPORT)
 
-      set(KBT "Microsoft.Azure.Kinect.BodyTracking.1.0.1")
+      set(KBT "Microsoft.Azure.Kinect.BodyTracking.1.1.2")
       set(KBT_URL "https://www.nuget.org/api/v2/package/Microsoft.Azure.Kinect.BodyTracking/1.0.1")
       set(KBT_SHA512 "546ebf82551ca809213c7540c4a7c3ccdd14d1ae0ac5d8475b3a98439c4a68cf3d5b4e3fa70676d524ac820815f77611bf2d8ffba96933ad5b317db392d34f20")
       file(DOWNLOAD
@@ -153,7 +153,7 @@ if(MSVC AND NOT k4abt_FOUND)
       set_property(TARGET k4abt::k4abt PROPERTY IMPORTED_IMPLIB "${KBT_LIB}")
       set_property(TARGET k4abt::k4abt PROPERTY IMPORTED_LINK_DEPENDENT_LIBRARIES "${KBT_DNN_MODEL};${KBT_ONNX_DLL}")
       set(k4abt_FOUND TRUE)
-      set(k4abt_VERSION "1.0.1")
+      set(k4abt_VERSION "1.1.2")
       list(APPEND K4A_LIBS k4abt::k4abt)
       target_compile_definitions(${PROJECT_NAME}_node PUBLIC K4A_BODY_TRACKING)
       target_compile_definitions(${PROJECT_NAME}_nodelet PUBLIC K4A_BODY_TRACKING)
